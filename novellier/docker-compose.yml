@@ -1,0 +1,43 @@
+version: '3.8'
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - FLASK_ENV=development
+      - DATABASE_URL=postgresql://novellier_user:novellier_password@db:5432/novellier_db
+      - SECRET_KEY=mysecretkey # Change in production
+    depends_on:
+      - db
+    # command: ["sh", "-c", "flask db upgrade && flask run --host=0.0.0.0"] # Add migrations later
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend/src:/app/src # Mount src for hot reloading
+      - ./frontend/public:/app/public # Mount public for hot reloading
+    environment:
+      - CHOKIDAR_USEPOLLING=true # For hot reloading in Docker
+    depends_on:
+      - backend
+
+  db:
+    image: postgres:14-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: novellier_user
+      POSTGRES_PASSWORD: novellier_password
+      POSTGRES_DB: novellier_db
+    volumes:
+      - novellier_db_data:/var/lib/postgresql/data
+
+volumes:
+  novellier_db_data:

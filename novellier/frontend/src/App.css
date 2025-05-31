@@ -1,0 +1,73 @@
+.App {
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+  margin-bottom: 30px;
+}
+
+.auth-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+.auth-form {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  min-width: 300px;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+}
+
+.auth-form h2 {
+  margin-top: 0;
+}
+
+.auth-form div {
+  margin-bottom: 15px;
+}
+
+.auth-form label {
+  display: block;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.auth-form input {
+  width: calc(100% - 16px); /* Full width minus padding */
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.auth-form button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.auth-form button:hover {
+  background-color: #0056b3;
+}
+
+.auth-form p {
+  margin-top: 15px;
+  color: #dc3545; /* Error messages in red */
+}
+
+.auth-form p:not([class*="error"]) { /* Or a specific class for success messages */
+  color: #28a745; /* Success messages in green */
+}
