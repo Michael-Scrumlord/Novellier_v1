@@ -9,7 +9,8 @@ services:
     environment:
       - FLASK_ENV=development
       - DATABASE_URL=postgresql://novellier_user:novellier_password@db:5432/novellier_db
-      - SECRET_KEY=mysecretkey # Change in production
+    env_file:
+      - .env
     depends_on:
       - db
     # command: ["sh", "-c", "flask db upgrade && flask run --host=0.0.0.0"] # Add migrations later
