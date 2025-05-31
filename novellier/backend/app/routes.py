@@ -1,6 +1,5 @@
 from flask import Blueprint, jsonify, request
 from .models import User, db # Assuming User and db are in models.py
-from werkzeug.security import check_password_hash # Already in User model but good for direct use if needed
 
 bp = Blueprint('main', __name__, url_prefix='/api')
 
